@@ -2,16 +2,23 @@
 //
 
 #include "stdafx.h"
-#include "../googletest/include/gtest/gtest.h"
+#include "gtest.h"
 
 
-extern int MainTestRun(int argc, _TCHAR* argv[]);
+extern bool DummyFunc();
 
-__declspec(dllimport) bool DummyFunc();
+
+TEST(novy, Dummy)
+{
+	ASSERT_EQ(true, DummyFunc());
+}
+
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	return MainTestRun(argc, argv);
+	::testing::InitGoogleTest(&argc, argv);
+
+	return RUN_ALL_TESTS();
 }
 
