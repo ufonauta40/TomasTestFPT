@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "../googletest/include/gtest/gtest.h"
+#include "gtest.h"
 
 
 __declspec(dllexport) bool DummyFunc()
