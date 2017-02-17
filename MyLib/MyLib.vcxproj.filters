@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\System">
+      <UniqueIdentifier>{25455041-cd2d-47ff-9dcc-88aba5a55a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Container">
+      <UniqueIdentifier>{e5a28acc-c12d-444c-92a6-cbe5e5938aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Memory">
+      <UniqueIdentifier>{447e06d3-7776-4e08-85be-dd21a07b97c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -23,6 +32,18 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\Array.h">
+      <Filter>Header Files\System\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\common.h">
+      <Filter>Header Files\System\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\Vector.h">
+      <Filter>Header Files\System\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Memory\Allocator.h">
+      <Filter>Header Files\System\Memory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
