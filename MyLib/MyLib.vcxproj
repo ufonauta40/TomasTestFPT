@@ -85,6 +85,7 @@
     <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\common.h" />
     <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\Vector.h" />
     <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Memory\Allocator.h" />
+    <ClInclude Include="MyLib.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

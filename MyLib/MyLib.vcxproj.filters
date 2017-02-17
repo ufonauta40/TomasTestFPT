@@ -45,6 +45,9 @@
     <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Memory\Allocator.h">
       <Filter>Header Files\System\Memory</Filter>
     </ClInclude>
+    <ClInclude Include="MyLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

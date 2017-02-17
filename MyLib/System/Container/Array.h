@@ -2,8 +2,8 @@
 #define MYLIB_SYSTEM_CONTAINER_ARRAY
 
 
-#include "MyLib/System/Container/common.h"
-#include "MyLib/System/Memory/Allocator.h"
+#include "common.h"
+#include "../Memory/Allocator.h"
 
 
 namespace MyLib { namespace System { namespace Container {
