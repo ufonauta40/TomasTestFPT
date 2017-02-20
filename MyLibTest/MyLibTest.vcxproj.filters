@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{d1f5c1fa-df59-489d-98e9-6e41754586f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System\Container">
+      <UniqueIdentifier>{dc64aaf5-afe4-43d8-9571-10c696235ada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System">
+      <UniqueIdentifier>{99ce738e-fb94-4bd4-958e-d3c9aa7ea912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Container">
+      <UniqueIdentifier>{19f808c5-f884-4469-8a90-49f5e10cc803}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -24,6 +36,9 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="System\Container\Array_test.h">
+      <Filter>Header Files\System\Container</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -31,6 +46,9 @@
     </ClCompile>
     <ClCompile Include="MyLibTest.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Container\Array_test.cpp">
+      <Filter>Source Files\System\Container</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
