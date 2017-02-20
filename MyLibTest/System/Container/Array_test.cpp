@@ -90,3 +90,36 @@ TEST(ArrayTest, Assignment)
 	delete ap2;
 }
 
+TEST(ArrayTest, IteratorInit)
+{
+	ArrayPtr*ap;
+	ArrayPtr::Iterator* ip;
+	ASSERT_NE(NULL, reinterpret_cast<uintptr_t> (ap = new ArrayPtr()));
+	ASSERT_NE(NULL, ip = new ArrayPtr::Iterator(ap));
+	
+	delete ip;
+	delete ap;
+}
+
+TEST(ArrayTest, IteratorAdvance)
+{
+	ArrayPtr*ap;
+	ArrayPtr::Iterator* ip;
+	ASSERT_NE(NULL, reinterpret_cast<uintptr_t> (ap = new ArrayPtr()));
+	ASSERT_NE(NULL, ip = new ArrayPtr::Iterator(ap));
+
+	ap->SetAt(0, 111);
+	ap->SetAt(1, 222);
+
+	ip->Reset(ap);
+	ASSERT_EQ(*ip, 111);
+	
+	(*ip)++;
+
+	ASSERT_EQ(*ip, 222);
+
+	
+
+	delete ip;
+	delete ap;
+}
