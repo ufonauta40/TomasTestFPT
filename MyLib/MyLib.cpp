@@ -8,3 +8,7 @@
 
 #include "MyLib.h"
 
+__declspec(dllexport) bool DummyFunc()
+{
+	return true;
+}

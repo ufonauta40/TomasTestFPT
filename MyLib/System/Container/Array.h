@@ -56,9 +56,18 @@ public:
         bool operator++() { return m_ix < m_size ? ++m_ix, true : false; }
         ElementType& operator*() const { return m_container->GetAt(m_ix); }
 
-        template<typename Right>
-        bool operator==(const Right& right) const { return m_ix == right.GetIndex(); }
-        template<typename Right>
+//////////////////////////////////////////////////////////////
+ //       template<typename Right>
+ //       bool operator==(const Right& right) const { return m_ix == right.GetIndex(); } 
+//
+// 1. Compile Error - "GetIndex() member not found"
+// 2. Functionality wrong - Should also check if it is referencing the same Array object
+		
+		bool operator==(const IteratorBase& right) const { return m_ix == right.GetIndex(); }
+
+//////////////////////////////////////////////////////////////
+
+		template<typename Right>
         bool operator!=(const Right& right) const { return !(*this == right); }
 
         void Reset(ArrayTypePtr container) {
