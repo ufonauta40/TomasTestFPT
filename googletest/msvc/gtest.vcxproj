@@ -39,12 +39,13 @@
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionName)/$(Configuration)\</OutDir>
-    <IntDir>$(OutDir)$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\$(SolutionName)-bin\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)Temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionName)/$(Configuration)\</OutDir>
-    <IntDir>$(OutDir)$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)..\$(SolutionName)-bin\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)Temp\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -60,7 +61,7 @@
       </MultiProcessorCompilation>
     </ClCompile>
     <Lib>
-      <OutputFile>$(OutDir)gtestd.lib</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -73,7 +74,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Lib>
-      <OutputFile>$(OutDir)gtest.lib</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>

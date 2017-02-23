@@ -10,5 +10,5 @@
 
 __declspec(dllexport) bool DummyFunc()
 {
-	return true;
+    return true;
 }

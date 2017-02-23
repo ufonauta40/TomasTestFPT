@@ -19,12 +19,6 @@
     <Filter Include="Source Files\System\Container">
       <UniqueIdentifier>{dc64aaf5-afe4-43d8-9571-10c696235ada}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\System">
-      <UniqueIdentifier>{99ce738e-fb94-4bd4-958e-d3c9aa7ea912}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\System\Container">
-      <UniqueIdentifier>{19f808c5-f884-4469-8a90-49f5e10cc803}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -35,9 +29,6 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="System\Container\Array_test.h">
-      <Filter>Header Files\System\Container</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

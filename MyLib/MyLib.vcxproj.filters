@@ -33,20 +33,20 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\Array.h">
-      <Filter>Header Files\System\Container</Filter>
-    </ClInclude>
-    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\common.h">
-      <Filter>Header Files\System\Container</Filter>
-    </ClInclude>
-    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\Vector.h">
-      <Filter>Header Files\System\Container</Filter>
-    </ClInclude>
-    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Memory\Allocator.h">
-      <Filter>Header Files\System\Memory</Filter>
-    </ClInclude>
     <ClInclude Include="MyLib.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Container\Array.h">
+      <Filter>Header Files\System\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Container\common.h">
+      <Filter>Header Files\System\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Container\Vector.h">
+      <Filter>Header Files\System\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Memory\Allocator.h">
+      <Filter>Header Files\System\Memory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

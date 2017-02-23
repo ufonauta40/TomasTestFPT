@@ -41,9 +41,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)..\$(SolutionName)-bin\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)Temp\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)..\$(SolutionName)-bin\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)Temp\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -84,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="System\Container\Array_test.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>

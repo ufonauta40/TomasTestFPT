@@ -41,9 +41,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)..\$(SolutionName)-bin\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)Temp\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)..\$(SolutionName)-bin\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)Temp\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -81,12 +85,12 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\Array.h" />
-    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\common.h" />
-    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Container\Vector.h" />
-    <ClInclude Include="K:\Visual Studio 2013\Projects\TomasTestFPT\MyLib\System\Memory\Allocator.h" />
     <ClInclude Include="MyLib.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="System\Container\Array.h" />
+    <ClInclude Include="System\Container\common.h" />
+    <ClInclude Include="System\Container\Vector.h" />
+    <ClInclude Include="System\Memory\Allocator.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>

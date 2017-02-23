@@ -62,8 +62,8 @@ public:
 //
 // 1. Compile Error - "GetIndex() member not found"
 // 2. Functionality wrong - Should also check if it is referencing the same Array object
-		
-		bool operator==(const IteratorBase& right) const { return m_ix == right.GetIndex(); }
+
+        bool operator==(const IteratorBase& right) const { return m_ix == right.GetIndex(); }
 
 //////////////////////////////////////////////////////////////
 
