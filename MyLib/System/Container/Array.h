@@ -103,18 +103,25 @@ public:
     class ConstIterator : public IteratorBase<const ArrayType*, const Element> {
         typedef IteratorBase<const ArrayType*, const Element> Base;
     public:
-        ConstIterator(const ArrayType* container, Index ix = 0) : Base(container, ix) { }
+    //    ConstIterator(const ArrayType* container, Index ix = 0) : Base(container, ix) { }
         ConstIterator(const Iterator& from) : Base(from.GetContainer(), from.GetIndex()) {}
     };
 
-    ConstIterator Begin() const { return ConstIterator(this); }
+    ConstIterator Begin() const {   ConstIterator it;
+                                    it.Reset(this);
+                                    return it;
+    }
+
 
     Iterator Begin() {  Iterator it;
                         it.Reset(this);
                         return it;
     }
 
-    ConstIterator End() const { return ConstIterator(this, GetSize()); }
+    ConstIterator End() const {  ConstIterator it;
+                                 it.Reset(this, true);
+                                 return it;
+    }
 
     Iterator End() { Iterator it;
                      it.Reset(this, true);
