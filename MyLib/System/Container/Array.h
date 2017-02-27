@@ -50,7 +50,7 @@ public:
     template<typename ArrayTypePtr, typename ElementType>
     class IteratorBase {
     public:
-        IteratorBase(ArrayTypePtr container, Index ix) : m_container(container), m_ix(ix), m_size(container->GetSize()) { }
+        IteratorBase(const ArrayTypePtr container, const Index ix) : m_container(container), m_ix(ix), m_size(container->GetSize()) { }
         IteratorBase(const IteratorBase& from) : m_container(from.m_container), m_ix(from.m_ix), m_size(from.m_size) { }
 
         bool operator++() { return m_ix < m_size ? ++m_ix, true : false; }
@@ -70,8 +70,8 @@ public:
 		template<typename Right>
         bool operator!=(const Right& right) const { return !(*this == right); }
 
-        void Reset(ArrayTypePtr container) {
-            m_ix = 0;
+        void Reset(ArrayTypePtr container, bool toEnd = false) {
+            m_ix = toEnd ? container->GetSize() : 0;
             m_size = container->GetSize(); 
             m_container = container;
         }
@@ -92,9 +92,14 @@ public:
     class Iterator : public IteratorBase<ArrayType*, Element> {
         typedef IteratorBase<ArrayType*, Element> Base;
     public:
-        Iterator(ArrayType* container, Index ix = 0) : Base(container, ix) { }
-    };
+        Iterator(const IteratorBase& from) : Base(from) { }
+     //   Iterator(ArrayType* container, Index ix = 0) : Base(container, ix) { }
+    
+        Iterator() : Base(NULL, 0) { }
+      //  Iterator(Iterator& from) : Base(from.GetContainer(), from.GetIndex()) { }
 
+    };
+    
     class ConstIterator : public IteratorBase<const ArrayType*, const Element> {
         typedef IteratorBase<const ArrayType*, const Element> Base;
     public:
@@ -103,12 +108,19 @@ public:
     };
 
     ConstIterator Begin() const { return ConstIterator(this); }
-    Iterator Begin() { return Iterator(this); }
+
+    Iterator Begin() {  Iterator it;
+                        it.Reset(this);
+                        return it;
+    }
 
     ConstIterator End() const { return ConstIterator(this, GetSize()); }
-    Iterator End() { return Iterator(this, GetSize()); }
-};
 
+    Iterator End() { Iterator it;
+                     it.Reset(this, true);
+                     return it;
+    }
+};
 
 template<typename Element, typename Allocator>
 class SimpleArrayImpl {

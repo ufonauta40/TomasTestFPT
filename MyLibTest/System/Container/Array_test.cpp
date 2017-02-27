@@ -9,6 +9,7 @@ namespace MyLib { namespace Test { namespace System { namespace Container {
 
 using namespace MyLib::System::Container;
 
+
 //Test Array class construction
 TEST(ArrayTest, CreationAndDisposal)
 {
@@ -101,13 +102,22 @@ TEST(ArrayTest, Assignment)
     EXPECT_EQ(a2.GetAt(222), -5);
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////
 ///// Iterator testing
+//////////////////////////////////////////////////////////////////////////////////
+
 
 //Test Iterator class construction
 TEST(ArrayTest, IteratorInit)
 {
     HeapSimpleArray<int> a;
-    HeapSimpleArray<int>::Iterator i(&a);
+    HeapSimpleArray<int>::Iterator i;
+    HeapSimpleArray<int>::Iterator i2(a.Begin());
+//    HeapSimpleArray<int>::Iterator i3(a); -> Error should not compile anymore
+
+    EXPECT_EQ(i, a.End());
+    EXPECT_EQ(i, a.Begin());
 }
 
 // Call the Reset() function which should initialize the Iterator to the parameter 
@@ -115,16 +125,16 @@ TEST(ArrayTest, IteratorInit)
 TEST(ArrayTest, IteratorReset)
 {
     HeapSimpleArray<int> a1, a2;
-    HeapSimpleArray<int>::Iterator i(&a1);
-
+    HeapSimpleArray<int>::Iterator i(a1.Begin()), i2;
+    
     a1.SetAt(0, 111);
     a1.SetAt(1, 112);
     ++i;
     
     a2.SetAt(0, 222);
-
+    
     i.Reset(&a2); 
-
+    
     EXPECT_EQ(*i, a2.GetAt(0));
 }
 
@@ -132,10 +142,10 @@ TEST(ArrayTest, IteratorReset)
 TEST(ArrayTest, IteratorAdvance)
 {
     HeapSimpleArray<int> a;
-    HeapSimpleArray<int>::Iterator i(&a);
+    HeapSimpleArray<int>::Iterator i(a.Begin());
 
     EXPECT_EQ(true, a.SetSize(1000));
-    
+
     a.SetAt(0, 111);
     a.SetAt(1, 222);
 
@@ -151,7 +161,7 @@ TEST(ArrayTest, IteratorAdvance)
 TEST(ArrayTest, IteratorEqual)
 {
     HeapSimpleArray<int> a, a2;
-    HeapSimpleArray<int>::Iterator i(&a), i2(&a2);
+    HeapSimpleArray<int>::Iterator i(a.Begin()), i2(a2.Begin());
 
     EXPECT_EQ(true, a.SetSize(1000));
 
@@ -180,7 +190,7 @@ TEST(ArrayTest, IteratorEqual)
 TEST(ArrayTest, IteratorNotEqual)
 {
     HeapSimpleArray<int> a, a2;
-    HeapSimpleArray<int>::Iterator i(&a), i2(&a);
+    HeapSimpleArray<int>::Iterator i(a.Begin()), i2;
 
     EXPECT_EQ(true, a.SetSize(1000));
 
@@ -189,13 +199,13 @@ TEST(ArrayTest, IteratorNotEqual)
 
     EXPECT_EQ(false, i != i2) << "i[1] != i2[1]";
     ++(i);
-    EXPECT_EQ(true, i != i2) << "ip[1] != ip[2]";
+    EXPECT_EQ(true, i != i2) << "i[1] != i2[2]";
     ++(i2);
-    EXPECT_EQ(false, i != i2) << "i[2] != i[2]";
+    EXPECT_EQ(false, i != i2) << "i[2] != i2[2]";
     i.Reset(&a);
-    EXPECT_EQ(true, i != i2) << "After reset: i[1] != i[2]";
+    EXPECT_EQ(true, i != i2) << "After reset: i[1] != i2[2]";
     i2.Reset(&a);
-    EXPECT_EQ(false, i != i2)  << "After reset: ip[1] != ip[1]";
+    EXPECT_EQ(false, i != i2)  << "After reset: i[1] != i2[1]";
 
     EXPECT_EQ(true, a2.SetSize(1000));
 
@@ -208,7 +218,7 @@ TEST(ArrayTest, IteratorNotEqual)
 TEST(ArrayTest, IteratorGetContainer)
 {
     HeapSimpleArray<int> a;
-    HeapSimpleArray<int>::Iterator i(&a);
+    HeapSimpleArray<int>::Iterator i(a.Begin());
 
     EXPECT_EQ(i.GetContainer(), &a) << "Container of the Iterator must match function return value";
 
@@ -219,10 +229,10 @@ TEST(ArrayTest, IteratorGetContainer)
 TEST(ArrayTest, IteratorGetIndex)
 {
     HeapSimpleArray<int> a;
-    HeapSimpleArray<int>::Iterator i(&a);
+    HeapSimpleArray<int>::Iterator i(a.Begin());
 
     EXPECT_EQ(true, a.SetSize(1000)); 
-    
+
     EXPECT_EQ(i.GetIndex(), 0) << "Checking initialization value";
     ++i;
     EXPECT_EQ(i.GetIndex(), 1) << "Traverse by one upward";
