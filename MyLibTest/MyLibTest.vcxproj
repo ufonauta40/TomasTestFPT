@@ -52,7 +52,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
@@ -67,7 +67,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -96,7 +96,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="System\Container\Array_test.cpp" />
+    <ClCompile Include="System\Container\ArrayTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\googletest\msvc\gtest.vcxproj">

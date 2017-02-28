@@ -38,7 +38,7 @@
     <ClCompile Include="MyLibTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="System\Container\Array_test.cpp">
+    <ClCompile Include="System\Container\ArrayTest.cpp">
       <Filter>Source Files\System\Container</Filter>
     </ClCompile>
   </ItemGroup>

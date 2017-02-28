@@ -50,7 +50,7 @@ public:
     template<typename ArrayTypePtr, typename ElementType>
     class IteratorBase {
     public:
-        IteratorBase(const ArrayTypePtr container, const Index ix) : m_container(container), m_ix(ix), m_size(container->GetSize()) { }
+        IteratorBase(const ArrayTypePtr container, const Index ix) : m_container(container), m_ix(ix), m_size(container == NULL ? 0 : container->GetSize()) { }
         IteratorBase(const IteratorBase& from) : m_container(from.m_container), m_ix(from.m_ix), m_size(from.m_size) { }
 
         bool operator++() { return m_ix < m_size ? ++m_ix, true : false; }
@@ -63,11 +63,11 @@ public:
 // 1. Compile Error - "GetIndex() member not found"
 // 2. Functionality wrong - Should also check if it is referencing the same Array object
 
-        bool operator==(const IteratorBase& right) const { return m_ix == right.GetIndex(); }
+        bool operator==(const IteratorBase& right) const { return m_ix == right.GetIndex() && m_container == right.m_container; }
 
 //////////////////////////////////////////////////////////////
 
-		template<typename Right>
+        template<typename Right>
         bool operator!=(const Right& right) const { return !(*this == right); }
 
         void Reset(ArrayTypePtr container, bool toEnd = false) {
@@ -99,11 +99,11 @@ public:
       //  Iterator(Iterator& from) : Base(from.GetContainer(), from.GetIndex()) { }
 
     };
-    
+
     class ConstIterator : public IteratorBase<const ArrayType*, const Element> {
         typedef IteratorBase<const ArrayType*, const Element> Base;
     public:
-    //    ConstIterator(const ArrayType* container, Index ix = 0) : Base(container, ix) { }
+        ConstIterator() : Base(NULL, 0) { }
         ConstIterator(const Iterator& from) : Base(from.GetContainer(), from.GetIndex()) {}
     };
 

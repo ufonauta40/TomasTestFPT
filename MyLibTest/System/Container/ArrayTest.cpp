@@ -26,9 +26,6 @@ TEST(ArrayTest, Size)
     EXPECT_EQ(true, a.SetSize(10));
     EXPECT_EQ(10, a.GetSize());
 
-    EXPECT_EQ(false, a.SetSize(-1));
-    EXPECT_EQ(10, a.GetSize());
-
     EXPECT_EQ(true, a.SetSize(0));
     EXPECT_EQ(0, a.GetSize());
 
@@ -89,7 +86,7 @@ TEST(ArrayTest, Assignment)
     a1 = a1;
     EXPECT_EQ(&a1, &a1);
 
-    a1 = a2; 
+    a2 = a1; 
     EXPECT_NE(&a1, &a2);
     
     EXPECT_EQ(a1.GetAt(0), a1.GetAt(0));
@@ -126,7 +123,7 @@ TEST(ArrayTest, IteratorInit)
     EXPECT_EQ(i2, a.End());
     EXPECT_EQ(i2, a.Begin());
 
-    EXPECT_EQ(i3, static_cast<HeapIntCIter>(a.End()));
+    EXPECT_EQ(i3, static_cast<HeapIntCIter>(a.Begin()));
     EXPECT_EQ(i3, static_cast<HeapIntCIter>(a.End()));
 
 }
@@ -136,14 +133,20 @@ TEST(ArrayTest, IteratorInit)
 TEST(ArrayTest, IteratorReset)
 {
     HeapSimpleArray<int> a1, a2;
-    HeapIntIter i(a1.Begin());
-    HeapIntCIter ci(a1.Begin());
+    HeapIntIter i;
+    HeapIntCIter ci;
 
-    
+    a1.SetSize(1000);
+
+    i.Reset(&a1);
+    ci.Reset(&a1);
+
     a1.SetAt(0, 111);
     a1.SetAt(1, 112);
     ++i;
     ++ci;    
+    
+    a2.SetSize(1000);
 
     a2.SetAt(0, 222);
     
@@ -158,10 +161,13 @@ TEST(ArrayTest, IteratorReset)
 TEST(ArrayTest, IteratorAdvance)
 {
     HeapSimpleArray<int> a;
-    HeapIntIter i(a.Begin());
-    HeapIntCIter ci(a.Begin());
+    HeapIntIter i;
+    HeapIntCIter ci;
 
     EXPECT_EQ(true, a.SetSize(1000));
+
+    i.Reset(&a);
+    ci.Reset(&a);
 
     a.SetAt(0, 111);
     a.SetAt(1, 222);
@@ -176,15 +182,49 @@ TEST(ArrayTest, IteratorAdvance)
     EXPECT_EQ(222, *ci) << "Advance constant iterator by one and check value";
 }
 
+// Test the bounds of the Array by traversing through it with an Iterator
+// Also test value assigning with an Iterator (*i = ..)
+TEST(ArrayTest, IteratorArrayBoundTest)
+{
+    HeapSimpleArray<int> a;
+    HeapIntIter i;
+    HeapIntCIter ci;
+    int c = 0;
+
+    EXPECT_EQ(true, a.SetSize(1000));
+
+    i.Reset(&a);
+    ci.Reset(&a);
+
+    while (i != a.End()) { 
+        *i = c;
+        c++;
+        ++i;
+    }
+
+    c = 0;
+    
+    while (ci != static_cast<HeapIntCIter> (a.End())) {
+        EXPECT_EQ(*ci, c);
+        ++ci;
+        c++;
+    }
+}
+
+
+
 // Testing the equality '==' operator which compares Iterator pointing.
 // The result is true if both are pointing to the same object inside the Array
 TEST(ArrayTest, IteratorEqual)
 {
     HeapSimpleArray<int> a, a2;
-    HeapIntIter i(a.Begin()), i2(a.Begin());
-    HeapIntCIter ci(a.Begin()), ci2(a.Begin());
+    HeapIntIter i, i2;
+    HeapIntCIter ci, ci2;
 
     EXPECT_EQ(true, a.SetSize(1000));
+    
+    i.Reset(&a); i2.Reset(&a);
+    ci.Reset(&a); ci2.Reset(&a);
 
     a.SetAt(0, 111);
     a.SetAt(1, 222);
@@ -198,7 +238,7 @@ TEST(ArrayTest, IteratorEqual)
    
     EXPECT_NE(true, i == i2) << "i[1] = i[2]";
     EXPECT_NE(true, ci == ci2) << "constant i[1] = constant i[2]";
-    EXPECT_NE(true, ci == static_cast<HeapIntCIter>(i)) << "i[1] = constant i[2]";
+    EXPECT_NE(true, ci == static_cast<HeapIntCIter>(i2)) << "i[1] = constant i[2]";
 
     ++i2;
     ++ci2;
@@ -236,11 +276,13 @@ TEST(ArrayTest, IteratorEqual)
 TEST(ArrayTest, IteratorNotEqual)
 {
     HeapSimpleArray<int> a, a2;
-    HeapIntIter i(a.Begin()), i2(a.Begin());
-    HeapIntCIter ci(a.Begin()), ci2(a.Begin());
-
+    HeapIntIter i, i2;
+    HeapIntCIter ci, ci2;
 
     EXPECT_EQ(true, a.SetSize(1000));
+
+    i.Reset(&a); i2.Reset(&a);
+    ci.Reset(&a); ci2.Reset(&a);
 
     a.SetAt(0, 111);
     a.SetAt(1, 222);
@@ -307,10 +349,13 @@ TEST(ArrayTest, IteratorGetContainer)
 TEST(ArrayTest, IteratorGetIndex)
 {
     HeapSimpleArray<int> a;
-    HeapIntIter i(a.Begin());
-    HeapIntCIter ci(a.Begin());
+    HeapIntIter i;
+    HeapIntCIter ci;
 
     EXPECT_EQ(true, a.SetSize(1000)); 
+
+    i.Reset(&a);
+    ci.Reset(&a);
 
     EXPECT_EQ(i.GetIndex(), 0) << "Checking initialization value";
     EXPECT_EQ(ci.GetIndex(), 0) << "Checking initialization value";
