@@ -89,7 +89,7 @@ TEST(ArrayTest, Assignment)
     a2 = a1; 
     EXPECT_NE(&a1, &a2);
     
-    EXPECT_EQ(a1.GetAt(0), a1.GetAt(0));
+    EXPECT_EQ(a1.GetAt(0), a2.GetAt(0));
     EXPECT_EQ(a1.GetAt(0), -5);
 
     EXPECT_EQ(a1.GetAt(111), a2.GetAt(111));

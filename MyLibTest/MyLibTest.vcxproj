@@ -97,6 +97,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="System\Container\ArrayTest.cpp" />
+    <ClCompile Include="System\Container\VectorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\googletest\msvc\gtest.vcxproj">

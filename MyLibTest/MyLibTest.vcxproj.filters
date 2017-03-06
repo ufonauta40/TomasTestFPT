@@ -41,5 +41,8 @@
     <ClCompile Include="System\Container\ArrayTest.cpp">
       <Filter>Source Files\System\Container</Filter>
     </ClCompile>
+    <ClCompile Include="System\Container\VectorTest.cpp">
+      <Filter>Source Files\System\Container</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
