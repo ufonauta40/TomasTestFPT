@@ -134,12 +134,23 @@ template<typename Element, typename Allocator>
 class SingleLinkedVectorImpl { };
 
 template<typename Element, typename Allocator>
-class GranulatedVectorImpl { 
+class GranulatedVectorImpl {
+    
+    class Panel {
+        HeapSimpleArray <Element> sae;
+        Index first;
+    };
+   
+    GetAt(Index ix);
+    SetAt(Index ix);
 
 
+private:
+    HeapSimpleArray < Panel* > m_container;
+    Index m_lastIndex;
+    Index m_granulation;    
 
-
-};
+ };
 
 template<typename Element>
 class HeapSingleLinkedVector : public Vector<Element, SingleLinkedVectorImpl<Element, MyLib::System::Memory::HeapAllocator<Element> > > { };

@@ -22,6 +22,15 @@
     <Filter Include="Header Files\System\Memory">
       <UniqueIdentifier>{447e06d3-7776-4e08-85be-dd21a07b97c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{ca63c9f6-08bc-4094-b437-bec9275c1c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System\Container">
+      <UniqueIdentifier>{96e9182c-c719-4047-b129-914c27cbddd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\System\Memory">
+      <UniqueIdentifier>{785c3c31-dbd4-4fea-a848-fe9c2eae6fff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -58,6 +67,9 @@
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Container\Vector.cpp">
+      <Filter>Source Files\System\Container</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
