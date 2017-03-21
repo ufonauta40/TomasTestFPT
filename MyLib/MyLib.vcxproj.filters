@@ -57,6 +57,9 @@
     <ClInclude Include="System\Memory\Allocator.h">
       <Filter>Header Files\System\Memory</Filter>
     </ClInclude>
+    <ClInclude Include="System\Container\DynamicArray.h">
+      <Filter>Header Files\System\Container</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -69,6 +72,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="System\Container\Vector.cpp">
+      <Filter>Source Files\System\Container</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Container\DynamicArray.cpp">
       <Filter>Source Files\System\Container</Filter>
     </ClCompile>
   </ItemGroup>
